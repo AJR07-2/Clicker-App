@@ -31,5 +31,11 @@ class ViewController: UIViewController {
             congratsLabel.text = "WOW GOOD JOB!"
         }
     }
+    
+    @IBAction func SignIn(_ sender: Any) {
+    }
+    
+    @IBAction func SignOut(_ sender: Any) {
+    }
 }
 

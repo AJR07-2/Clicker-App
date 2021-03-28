@@ -1,0 +1,6 @@
+framework module Pods_Lesson_1__Clicker_App {
+  umbrella header "Pods-Lesson 1- Clicker App-umbrella.h"
+
+  export *
+  module * { export * }
+}
