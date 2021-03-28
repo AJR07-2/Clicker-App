@@ -106,7 +106,6 @@
 				3A27F34A260491F500C79446 /* Frameworks */,
 				3A27F34B260491F500C79446 /* Resources */,
 				C28599D0515F224FAE4BCC19 /* [CP] Embed Pods Frameworks */,
-				E0E76AFF52DD1CDFFC27135B /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -201,23 +200,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Lesson 1- Clicker App/Pods-Lesson 1- Clicker App-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		E0E76AFF52DD1CDFFC27135B /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Lesson 1- Clicker App/Pods-Lesson 1- Clicker App-resources-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Copy Pods Resources";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Lesson 1- Clicker App/Pods-Lesson 1- Clicker App-resources-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Lesson 1- Clicker App/Pods-Lesson 1- Clicker App-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
