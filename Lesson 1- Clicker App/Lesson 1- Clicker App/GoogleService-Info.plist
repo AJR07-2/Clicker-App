@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>378750464525-g3arp7a7g119f5n3cno3a8fnvob6v56g.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.378750464525-g3arp7a7g119f5n3cno3a8fnvob6v56g</string>
+	<key>API_KEY</key>
+	<string>AIzaSyDZ-JzjjWILDIvlOVCrMTcg2v45yJZ_4rg</string>
+	<key>GCM_SENDER_ID</key>
+	<string>378750464525</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.Ang-Jun-Ray.Lesson-1--Clicker-App</string>
+	<key>PROJECT_ID</key>
+	<string>clicker-app-ccd86</string>
+	<key>STORAGE_BUCKET</key>
+	<string>clicker-app-ccd86.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:378750464525:ios:06d6a535522c124074db44</string>
+</dict>
+</plist>
