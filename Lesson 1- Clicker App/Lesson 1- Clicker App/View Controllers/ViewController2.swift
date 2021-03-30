@@ -94,13 +94,13 @@ class ViewController2: UIViewController {
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        label.frame = CGRect(x: 0, y: 30, width: view.frame.size.width, height: 30)
+        label.frame = CGRect(x: 0, y: 50, width: view.frame.size.width, height: 50)
         
-        emailField.frame = CGRect(x: 20, y: label.frame.origin.y + label.frame.size.height + 10, width: view.frame.size.width - 60, height: 20)
+        emailField.frame = CGRect(x: 20, y: label.frame.origin.y + label.frame.size.height + 10, width: view.frame.size.width - 60, height: 50)
 
-        passwordField.frame = CGRect(x: 20, y: emailField.frame.origin.y + emailField.frame.size.height + 10, width: view.frame.size.width - 60, height: 20)
+        passwordField.frame = CGRect(x: 20, y: emailField.frame.origin.y + emailField.frame.size.height + 10, width: view.frame.size.width - 60, height: 50)
 
-        button.frame = CGRect(x: 20, y: passwordField.frame.origin.y + passwordField.frame.size.height + 10, width: view.frame.size.width - 60, height: 20)
+        button.frame = CGRect(x: 20, y: passwordField.frame.origin.y + passwordField.frame.size.height + 10, width: view.frame.size.width - 60, height: 50)
 
     }
     

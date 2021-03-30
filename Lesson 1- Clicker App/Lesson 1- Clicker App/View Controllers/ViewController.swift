@@ -14,6 +14,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var Settings: UIButton!
     @IBOutlet weak var congratsLabel: UILabel!
     @IBOutlet weak var clickButton: UIButton!
+    @IBOutlet weak var userName: UILabel!
     
     var counter = 0
     override func viewDidLoad() {
