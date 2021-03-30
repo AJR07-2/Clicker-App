@@ -1,14 +1,14 @@
 //
-//  ViewController.swift
+//  ViewController2.swift
 //  Lesson 1- Clicker App
 //
-//  Created by Ang Jun Ray on 19/3/21.
+//  Created by Ang Jun Ray on 30/3/21.
 //
 
 import UIKit
 import FirebaseAuth
 
-class ViewController: UIViewController {
+class ViewController2: UIViewController {
     private let label: UILabel = {
         let label = UILabel()
         label.textAlignment = .center
@@ -57,16 +57,8 @@ class ViewController: UIViewController {
         return button
     }()
     
-    @IBOutlet weak var congratsLabel: UILabel!
-    @IBOutlet weak var clickButton: UIButton!
-    
-    var counter = 0
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
-        clickButton.layer.cornerRadius = 10
-        congratsLabel.isHidden = true;
-        
         view.addSubview(label)
         view.addSubview(emailField)
         view.addSubview(passwordField)
@@ -119,17 +111,6 @@ class ViewController: UIViewController {
         }
     }
     
-    @IBAction func buttonPressed(_ sender: Any) {
-        counter+=1
-        clickButton.titleLabel?.text = "\(counter)"
-        if(counter > 20 && counter < 40){
-            congratsLabel.isHidden = false;
-            congratsLabel.text = "KEEP IT UP 😀"
-        }else if(counter > 40){
-            congratsLabel.text = "WOW GOOD JOB!"
-        }
-    }
-    
     @objc private func didTapButton(){
         print("continue button tapped")
         guard let email = emailField.text, !email.isEmpty,
@@ -159,6 +140,7 @@ class ViewController: UIViewController {
             strongSelf.passwordField.resignFirstResponder()
         })
     }
+    
     func showCreateAccount(email: String, password: String){
         let alert  = UIAlertController(title: "Create Account", message: "Would you like to create an account", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "Continue", style: .default, handler: {_ in
@@ -188,5 +170,9 @@ class ViewController: UIViewController {
         
         present(alert, animated: true)
     }
-}
 
+    @IBAction func goHome(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
+    }
+
+}
