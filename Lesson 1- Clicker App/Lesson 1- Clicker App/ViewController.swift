@@ -58,14 +58,12 @@ class ViewController: UIViewController {
     }()
     
     @IBOutlet weak var congratsLabel: UILabel!
-    @IBOutlet weak var counterLabel: UILabel!
     @IBOutlet weak var clickButton: UIButton!
     
     var counter = 0
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        counterLabel.layer.cornerRadius = 10
         clickButton.layer.cornerRadius = 10
         congratsLabel.isHidden = true;
         
@@ -123,7 +121,7 @@ class ViewController: UIViewController {
     
     @IBAction func buttonPressed(_ sender: Any) {
         counter+=1
-        counterLabel.text = "Counts: \(counter)"
+        clickButton.titleLabel?.text = "\(counter)"
         if(counter > 20 && counter < 40){
             congratsLabel.isHidden = false;
             congratsLabel.text = "KEEP IT UP 😀"
