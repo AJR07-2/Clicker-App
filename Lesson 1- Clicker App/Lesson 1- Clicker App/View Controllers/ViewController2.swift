@@ -7,6 +7,7 @@
 
 import UIKit
 import FirebaseAuth
+import Firestore
 
 class ViewController2: UIViewController {
     private let label: UILabel = {
@@ -162,6 +163,9 @@ class ViewController2: UIViewController {
                 
                 strongSelf.emailField.resignFirstResponder()
                 strongSelf.passwordField.resignFirstResponder()
+                
+                //update firebase
+                let database = Firebase.Firesto ()
             })
         }))
         alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: {_ in
