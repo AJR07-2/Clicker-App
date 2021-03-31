@@ -43,7 +43,7 @@
                                 <rect key="frame" x="28" y="44" width="30" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <connections>
-                                    <action selector="goToSettings:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Nf2-Dn-LJ9"/>
+                                    <action selector="goToUserSettings:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Qk5-3t-hHL"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Clicker App" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Q3R-Ba-4Oq">
@@ -62,27 +62,46 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="e5S-kl-now" userLabel="LeaderBoard">
+                                <rect key="frame" x="28" y="82" width="30" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <connections>
+                                    <action selector="goToLeaderBoards:" destination="BYZ-38-t0r" eventType="touchUpInside" id="B8u-NS-6dw"/>
+                                </connections>
+                            </button>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Elapsed TIme: 0s" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UMV-Hc-jvf">
+                                <rect key="frame" x="119" y="500" width="162" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="1" green="0.18142545090000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemGroupedBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Mh7-Wh-NPx" secondAttribute="trailing" constant="133" id="56T-1h-2uA"/>
+                            <constraint firstItem="UMV-Hc-jvf" firstAttribute="top" secondItem="am1-6U-1lh" secondAttribute="bottom" constant="40" id="B3h-KY-WE0"/>
                             <constraint firstItem="Mh7-Wh-NPx" firstAttribute="top" secondItem="Q3R-Ba-4Oq" secondAttribute="bottom" constant="37" id="CPZ-w8-VdA"/>
                             <constraint firstItem="Q3R-Ba-4Oq" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="50" id="DK0-hx-ATo"/>
+                            <constraint firstItem="UMV-Hc-jvf" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="119" id="Gts-Ef-h9r"/>
                             <constraint firstItem="am1-6U-1lh" firstAttribute="top" secondItem="Q3R-Ba-4Oq" secondAttribute="bottom" constant="145" id="Pcd-hS-2Vs"/>
                             <constraint firstItem="Mh7-Wh-NPx" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="134" id="aXo-UJ-EqD"/>
                             <constraint firstItem="N1R-tI-wAT" firstAttribute="top" secondItem="am1-6U-1lh" secondAttribute="bottom" constant="100" id="bZE-45-0aD"/>
                             <constraint firstItem="am1-6U-1lh" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="320" id="jwV-ra-12a"/>
                             <constraint firstItem="am1-6U-1lh" firstAttribute="top" secondItem="Mh7-Wh-NPx" secondAttribute="bottom" constant="72" id="kkz-1G-ySR"/>
+                            <constraint firstItem="N1R-tI-wAT" firstAttribute="top" secondItem="UMV-Hc-jvf" secondAttribute="bottom" constant="39" id="pWu-CW-hoX"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="am1-6U-1lh" secondAttribute="trailing" constant="76" id="v8z-5x-z8j"/>
                             <constraint firstItem="am1-6U-1lh" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="77" id="vVT-UH-Fuf"/>
                             <constraint firstItem="Q3R-Ba-4Oq" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="108" id="vkF-Wg-oLN"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="UMV-Hc-jvf" secondAttribute="trailing" constant="133" id="w0w-Bc-eKS"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="LeaderBoard" destination="e5S-kl-now" id="ZCc-ec-1dX"/>
                         <outlet property="Settings" destination="3bo-1i-bVY" id="P4Y-5v-yuv"/>
                         <outlet property="clickButton" destination="am1-6U-1lh" id="MjY-cK-3Q2"/>
                         <outlet property="congratsLabel" destination="N1R-tI-wAT" id="5Z1-cG-Jge"/>
+                        <outlet property="timerLabel" destination="UMV-Hc-jvf" id="kyS-Ng-C1k"/>
                         <outlet property="userName" destination="Mh7-Wh-NPx" id="0UY-MY-0a7"/>
                     </connections>
                 </viewController>
@@ -118,7 +137,7 @@
         <!--View Controller3-->
         <scene sceneID="Hr7-jj-3Qp">
             <objects>
-                <viewController id="sCq-xt-eUa" customClass="ViewController3" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="VC3" id="sCq-xt-eUa" customClass="ViewController3" customModule="Lesson_1__Clicker_App" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="NDK-ZD-eKd">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
