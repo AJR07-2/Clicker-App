@@ -75,7 +75,15 @@ class ViewController: UIViewController {
                         "score": counter,
                     ])
                     
-                    database.collection("User").document(FirebaseAuth.Auth.auth().currentUser!.email!)
+                    //TODO: CHANGE USER HIGHEST COUNT
+                    let doc = database.collection("User").document(FirebaseAuth.Auth.auth().currentUser!.email!)
+                    doc.getDocument { (document, error) in
+                        if let document = document, document.exists {
+                            let dataDescription = document.data().map(String.init(describing:)) ?? "nil"
+                        } else {
+                            print("Document does not exist")
+                        }
+                    }
                     
                     let alert  = UIAlertController(title: "Added to user history!", message: "Your score is \(counter)", preferredStyle: .alert)
                     alert.addAction(UIAlertAction(title: "Cool", style: .cancel, handler: {_ in
