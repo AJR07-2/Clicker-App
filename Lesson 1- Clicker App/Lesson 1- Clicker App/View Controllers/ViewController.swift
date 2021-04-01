@@ -43,18 +43,20 @@ class ViewController: UIViewController {
             timerLabel.isHidden = false
         }
         clickButton.setTitle("\(counter)", for: .normal)
-        if(counter > 20 && counter < 40){
+        if(counter%20 == 0){
             congratsLabel.isHidden = false
-            congratsLabel.text = "KEEP IT UP 😀"
-        }else if(counter > 40){
-            congratsLabel.text = "WOW GOOD JOB!"
+            congratsLabel.text = Congrats.congrats[counter/20 - 1]
+            congratsLabel.alpha = 3
+            UIView.animate(withDuration: 3.0) {
+                self.congratsLabel.alpha = 0
+            }
         }
     }
     
     @objc func updateTimer(){
         timeElapsed += 0.1
         timerLabel.text = "Elapsed Time: \(Double(round(10*timeElapsed)/10))s"
-        if(Double(round(10*timeElapsed)/10) == 10.0){
+        if(Double(round(10*timeElapsed)/10) == 60.0){
             print("Tmeeee's up!")
             timerLabel.text = "TIME'S UP!"
             timer?.invalidate()
