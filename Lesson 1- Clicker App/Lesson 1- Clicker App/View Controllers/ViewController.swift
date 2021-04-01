@@ -13,6 +13,7 @@ class ViewController: UIViewController {
 
     var timer:Timer? = Timer()
     var timeElapsed = 0.0
+    var CPS = 0.0
     @IBOutlet weak var Settings: UIButton!
     @IBOutlet weak var LeaderBoard: UIButton!
     @IBOutlet weak var congratsLabel: UILabel!
@@ -21,6 +22,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var timerLabel: UILabel!
     @IBOutlet weak var History: UIButton!
     @IBOutlet weak var Mode: UISegmentedControl!
+    @IBOutlet weak var clicksPerSecond: UILabel!
     
     var counter = 0
     
@@ -65,6 +67,8 @@ class ViewController: UIViewController {
     @objc func updateTimer(){
         timeElapsed += 0.1
         timerLabel.text = "Elapsed Time: \(Double(round(10*timeElapsed)/10))s"
+        CPS = Double(round(10*(Double(counter)/timeElapsed))/10)
+        clicksPerSecond.text = "Clicks Per Second: \(CPS)"
         if(Double(round(10*timeElapsed)/10) == 60.0){
             print("Tmeeee's up!")
             timerLabel.text = "TIME'S UP!"
@@ -80,18 +84,18 @@ class ViewController: UIViewController {
                     database.collection("User").document(FirebaseAuth.Auth.auth().currentUser!.email!).collection("History").document().setData([
                         "time": date,
                         "score": counter,
+                        "CPS": CPS,
                         "mode": Mode.selectedSegmentIndex
                     ])
                     
                     let prevCounter = counter
-                    print(counter)
-                    //TODO: CHANGE USER HIGHEST COUNT
+                    
                     database.collection("User").getDocuments() { [self] (querySnapshot, err) in
                         if let err = err {
                             print("Error getting documents: \(err)")
                         } else {
                             for document in querySnapshot!.documents {
-                                if(document.documentID == FirebaseAuth.Auth.auth().currentUser!.email!){
+                                if(document.documentID == FirebaseAuth.Auth.auth().currentUser?.email!){
                                     let data:Int = document.data()["highestCount"] as! Int
                                     if data < prevCounter{
                                         database.collection("User").document(FirebaseAuth.Auth.auth().currentUser!.email!).updateData(["highestCount" : prevCounter])
