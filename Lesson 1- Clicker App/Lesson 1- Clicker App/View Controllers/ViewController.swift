@@ -19,6 +19,8 @@ class ViewController: UIViewController {
     @IBOutlet weak var clickButton: UIButton!
     @IBOutlet weak var userName: UILabel!
     @IBOutlet weak var timerLabel: UILabel!
+    @IBOutlet weak var History: UIButton!
+    @IBOutlet weak var Mode: UISegmentedControl!
     
     var counter = 0
     
@@ -30,6 +32,9 @@ class ViewController: UIViewController {
         
         let image2 = UIImage(named: "trophyIcon")
         LeaderBoard.setBackgroundImage(image2, for: UIControl.State.normal)
+        
+        let image3 = UIImage(named: "historyIcon")
+        History.setBackgroundImage(image3, for: UIControl.State.normal)
 
         clickButton.layer.cornerRadius = 10
         congratsLabel.isHidden = true
@@ -42,6 +47,10 @@ class ViewController: UIViewController {
             timer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(updateTimer), userInfo: nil, repeats: true)
             timerLabel.isHidden = false
         }
+        if(Mode.selectedSegmentIndex == 1){
+            counter += Int.random(in: -1..<3)
+        }
+        
         clickButton.setTitle("\(counter)", for: .normal)
         if(counter%20 == 0){
             congratsLabel.isHidden = false
@@ -71,6 +80,7 @@ class ViewController: UIViewController {
                     database.collection("User").document(FirebaseAuth.Auth.auth().currentUser!.email!).collection("History").document().setData([
                         "time": date,
                         "score": counter,
+                        "mode": Mode.selectedSegmentIndex
                     ])
                     
                     let prevCounter = counter
@@ -138,5 +148,16 @@ class ViewController: UIViewController {
             print("Something went wrong :(")
         }
     }
+    
+    @IBAction func goToHistory(_ sender: Any) {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        
+        if let histVC = storyboard.instantiateViewController(withIdentifier: "VC4") as? HistoryViewController{
+            self.present(histVC, animated: true, completion: nil)
+        }else{
+            print("Something went wrong :(")
+        }
+    }
+    
 }
 

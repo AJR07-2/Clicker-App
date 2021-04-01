@@ -10,6 +10,7 @@
 		3A05800E261363E600BDA14A /* ViewController2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A05800D261363E600BDA14A /* ViewController2.swift */; };
 		3A0D4DC22610692D004F7FC6 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3A0D4DC12610692D004F7FC6 /* GoogleService-Info.plist */; };
 		3A1DB0052615ABC300597AF2 /* Congratulations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A1DB0042615ABC300597AF2 /* Congratulations.swift */; };
+		3A1DB0512615B9FD00597AF2 /* HistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A1DB0502615B9FD00597AF2 /* HistoryViewController.swift */; };
 		3A27F351260491F500C79446 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A27F350260491F500C79446 /* AppDelegate.swift */; };
 		3A27F353260491F500C79446 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A27F352260491F500C79446 /* SceneDelegate.swift */; };
 		3A27F355260491F500C79446 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A27F354260491F500C79446 /* ViewController.swift */; };
@@ -24,6 +25,7 @@
 		3A05800D261363E600BDA14A /* ViewController2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController2.swift; sourceTree = "<group>"; };
 		3A0D4DC12610692D004F7FC6 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		3A1DB0042615ABC300597AF2 /* Congratulations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Congratulations.swift; sourceTree = "<group>"; };
+		3A1DB0502615B9FD00597AF2 /* HistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryViewController.swift; sourceTree = "<group>"; };
 		3A27F34D260491F500C79446 /* Lesson 1- Clicker App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Lesson 1- Clicker App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3A27F350260491F500C79446 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3A27F352260491F500C79446 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -56,6 +58,7 @@
 				3A27F354260491F500C79446 /* ViewController.swift */,
 				3A05800D261363E600BDA14A /* ViewController2.swift */,
 				3A73E3D3261372BA00597D14 /* ViewController3.swift */,
+				3A1DB0502615B9FD00597AF2 /* HistoryViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -239,6 +242,7 @@
 				3A27F355260491F500C79446 /* ViewController.swift in Sources */,
 				3A05800E261363E600BDA14A /* ViewController2.swift in Sources */,
 				3A27F351260491F500C79446 /* AppDelegate.swift in Sources */,
+				3A1DB0512615B9FD00597AF2 /* HistoryViewController.swift in Sources */,
 				3A27F353260491F500C79446 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
