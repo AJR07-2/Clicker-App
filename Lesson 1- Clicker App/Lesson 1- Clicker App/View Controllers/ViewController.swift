@@ -65,15 +65,9 @@ class ViewController: UIViewController {
                     let database = FirebaseFirestore.Firestore.firestore()
 
                     let date = Date()
-                    let calendar = Calendar.current
-                    let year = calendar.component(.year, from: date)
-                    let month = calendar.component(.month, from: date)
-                    let day = calendar.component(.day, from: date)
-                    let hour = calendar.component(.hour, from: date)
-                    let minutes = calendar.component(.minute, from: date)
                     
                     database.collection("User").document(FirebaseAuth.Auth.auth().currentUser!.email!).collection("History").document().setData([
-                        "time": [year, month, day, hour, minutes],
+                        "time": date,
                         "score": counter,
                     ])
                     
