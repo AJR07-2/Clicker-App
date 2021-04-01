@@ -10,12 +10,26 @@ import FirebaseAuth
 import FirebaseFirestore
 
 class ViewController2: UIViewController {
+    @IBOutlet weak var SucessLabel: UILabel!
+
     private let label: UILabel = {
         let label = UILabel()
         label.textAlignment = .center
         label.text = "Log In"
         label.font = .systemFont(ofSize: 24, weight: .semibold)
         return label
+    }()
+    
+    private let userName: UITextField = {
+        let userName = UITextField()
+        userName.placeholder = "Username"
+        userName.layer.borderWidth = 1
+        userName.layer.borderColor = UIColor.black.cgColor
+        userName.autocapitalizationType = .none
+        userName.leftViewMode = .always
+        userName.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 5, height: 0))
+        
+        return userName
     }()
     
     private let emailField: UITextField = {
@@ -58,9 +72,12 @@ class ViewController2: UIViewController {
         return button
     }()
     
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.addSubview(label)
+        view.addSubview(userName)
         view.addSubview(emailField)
         view.addSubview(passwordField)
         view.addSubview(button)
@@ -68,6 +85,7 @@ class ViewController2: UIViewController {
         
         if FirebaseAuth.Auth.auth().currentUser != nil{
             label.isHidden = true
+            userName.isHidden = true
             emailField.isHidden = true
             passwordField.isHidden = true
             button.isHidden = true
@@ -84,6 +102,7 @@ class ViewController2: UIViewController {
             
             label.isHidden = false
             emailField.isHidden = false
+            userName.isHidden = false
             passwordField.isHidden = false
             button.isHidden = false
             
@@ -97,7 +116,9 @@ class ViewController2: UIViewController {
         super.viewDidLayoutSubviews()
         label.frame = CGRect(x: 0, y: 50, width: view.frame.size.width, height: 50)
         
-        emailField.frame = CGRect(x: 20, y: label.frame.origin.y + label.frame.size.height + 10, width: view.frame.size.width - 60, height: 50)
+        userName.frame = CGRect(x: 20, y: label.frame.origin.y + label.frame.size.height + 10, width: view.frame.size.width - 60, height: 50)
+
+        emailField.frame = CGRect(x: 20, y: userName.frame.origin.y + userName.frame.size.height + 10, width: view.frame.size.width - 60, height: 50)
 
         passwordField.frame = CGRect(x: 20, y: emailField.frame.origin.y + emailField.frame.size.height + 10, width: view.frame.size.width - 60, height: 50)
 
@@ -115,7 +136,9 @@ class ViewController2: UIViewController {
     @objc private func didTapButton(){
         print("continue button tapped")
         guard let email = emailField.text, !email.isEmpty,
-              let password = passwordField.text, !password.isEmpty else{
+              let password = passwordField.text, !password.isEmpty,
+              let userName = userName.text, !userName.isEmpty
+        else{
             print("Missing Field Data")
             return
         }
@@ -126,7 +149,7 @@ class ViewController2: UIViewController {
             }
             guard error == nil else {
                 //show acc creation
-                strongSelf.showCreateAccount(email: email, password: password)
+                strongSelf.showCreateAccount(email: email, password: password, username: userName)
                 
                 return
             }
@@ -134,15 +157,18 @@ class ViewController2: UIViewController {
             print("Sign in sucessful")
             strongSelf.label.isHidden = true
             strongSelf.button.isHidden = true
+            strongSelf.userName.isHidden = true
             strongSelf.emailField.isHidden = true
             strongSelf.passwordField.isHidden = true
             
             strongSelf.emailField.resignFirstResponder()
             strongSelf.passwordField.resignFirstResponder()
+            
+            self?.SucessLabel.isHidden = false
         })
     }
     
-    func showCreateAccount(email: String, password: String){
+    func showCreateAccount(email: String, password: String, username: String){
         let alert  = UIAlertController(title: "Create Account", message: "Would you like to create an account", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "Continue", style: .default, handler: {_ in
             FirebaseAuth.Auth.auth().createUser(withEmail: email, password: password, completion: {[weak self] result, error in
@@ -167,12 +193,11 @@ class ViewController2: UIViewController {
                 //update firebase
                 let db = FirebaseFirestore.Firestore.firestore()
                 db.collection("User").document(email).setData([
-                    "uesrname": email,
+                    "username": username,
                     "email": email,
                     "highestCount": 0
                 ])
                 
-                db.collection("User").document(email).collection("History")
                 
             })
         }))

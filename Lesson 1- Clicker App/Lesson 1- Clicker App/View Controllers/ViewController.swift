@@ -11,7 +11,7 @@ import FirebaseFirestore
 
 class ViewController: UIViewController {
 
-    var timer = Timer()
+    var timer:Timer? = Timer()
     var timeElapsed = 0.0
     @IBOutlet weak var Settings: UIButton!
     @IBOutlet weak var LeaderBoard: UIButton!
@@ -21,6 +21,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var timerLabel: UILabel!
     
     var counter = 0
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -31,32 +32,33 @@ class ViewController: UIViewController {
         LeaderBoard.setBackgroundImage(image2, for: UIControl.State.normal)
 
         clickButton.layer.cornerRadius = 10
-        congratsLabel.isHidden = true;
+        congratsLabel.isHidden = true
     }
     
     @IBAction func buttonPressed(_ sender: Any) {
         counter+=1
         if(counter == 1){
             clickButton.backgroundColor = .red
-            timer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(updateCounter), userInfo: nil, repeats: true)
+            timer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(updateTimer), userInfo: nil, repeats: true)
             timerLabel.isHidden = false
         }
         clickButton.setTitle("\(counter)", for: .normal)
         if(counter > 20 && counter < 40){
-            congratsLabel.isHidden = false;
+            congratsLabel.isHidden = false
             congratsLabel.text = "KEEP IT UP 😀"
         }else if(counter > 40){
             congratsLabel.text = "WOW GOOD JOB!"
         }
     }
     
-    @objc func updateCounter(){
+    @objc func updateTimer(){
         timeElapsed += 0.1
         timerLabel.text = "Elapsed Time: \(Double(round(10*timeElapsed)/10))s"
-        if(Double(round(10*timeElapsed)/10) == 60.0){
+        if(Double(round(10*timeElapsed)/10) == 10.0){
             print("Tmeeee's up!")
             timerLabel.text = "TIME'S UP!"
-            timer = Timer()
+            timer?.invalidate()
+            timer = nil
             timeElapsed = 0.0
             if(FirebaseAuth.Auth.auth().currentUser != nil){
                 if(counter > 20){
@@ -75,13 +77,21 @@ class ViewController: UIViewController {
                         "score": counter,
                     ])
                     
+                    let prevCounter = counter
+                    print(counter)
                     //TODO: CHANGE USER HIGHEST COUNT
-                    let doc = database.collection("User").document(FirebaseAuth.Auth.auth().currentUser!.email!)
-                    doc.getDocument { (document, error) in
-                        if let document = document, document.exists {
-                            let dataDescription = document.data().map(String.init(describing:)) ?? "nil"
+                    database.collection("User").getDocuments() { [self] (querySnapshot, err) in
+                        if let err = err {
+                            print("Error getting documents: \(err)")
                         } else {
-                            print("Document does not exist")
+                            for document in querySnapshot!.documents {
+                                if(document.documentID == FirebaseAuth.Auth.auth().currentUser!.email!){
+                                    let data:Int = document.data()["highestCount"] as! Int
+                                    if data < prevCounter{
+                                        database.collection("User").document(FirebaseAuth.Auth.auth().currentUser!.email!).updateData(["highestCount" : prevCounter])
+                                    }
+                                }
+                            }
                         }
                     }
                     

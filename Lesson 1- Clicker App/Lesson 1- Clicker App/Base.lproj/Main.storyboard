@@ -69,8 +69,9 @@
                                     <action selector="goToLeaderBoards:" destination="BYZ-38-t0r" eventType="touchUpInside" id="B8u-NS-6dw"/>
                                 </connections>
                             </button>
-                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Elapsed TIme: 0s" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UMV-Hc-jvf">
-                                <rect key="frame" x="119" y="500" width="162" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Elapsed TIme:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1uy-3I-tlH">
+                                <rect key="frame" x="104" y="502" width="206" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="1" green="0.18142545090000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <nil key="highlightedColor"/>
@@ -80,20 +81,16 @@
                         <color key="backgroundColor" systemColor="systemGroupedBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Mh7-Wh-NPx" secondAttribute="trailing" constant="133" id="56T-1h-2uA"/>
-                            <constraint firstItem="UMV-Hc-jvf" firstAttribute="top" secondItem="am1-6U-1lh" secondAttribute="bottom" constant="40" id="B3h-KY-WE0"/>
                             <constraint firstItem="Mh7-Wh-NPx" firstAttribute="top" secondItem="Q3R-Ba-4Oq" secondAttribute="bottom" constant="37" id="CPZ-w8-VdA"/>
                             <constraint firstItem="Q3R-Ba-4Oq" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="50" id="DK0-hx-ATo"/>
-                            <constraint firstItem="UMV-Hc-jvf" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="119" id="Gts-Ef-h9r"/>
                             <constraint firstItem="am1-6U-1lh" firstAttribute="top" secondItem="Q3R-Ba-4Oq" secondAttribute="bottom" constant="145" id="Pcd-hS-2Vs"/>
                             <constraint firstItem="Mh7-Wh-NPx" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="134" id="aXo-UJ-EqD"/>
                             <constraint firstItem="N1R-tI-wAT" firstAttribute="top" secondItem="am1-6U-1lh" secondAttribute="bottom" constant="100" id="bZE-45-0aD"/>
                             <constraint firstItem="am1-6U-1lh" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="320" id="jwV-ra-12a"/>
                             <constraint firstItem="am1-6U-1lh" firstAttribute="top" secondItem="Mh7-Wh-NPx" secondAttribute="bottom" constant="72" id="kkz-1G-ySR"/>
-                            <constraint firstItem="N1R-tI-wAT" firstAttribute="top" secondItem="UMV-Hc-jvf" secondAttribute="bottom" constant="39" id="pWu-CW-hoX"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="am1-6U-1lh" secondAttribute="trailing" constant="76" id="v8z-5x-z8j"/>
                             <constraint firstItem="am1-6U-1lh" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="77" id="vVT-UH-Fuf"/>
                             <constraint firstItem="Q3R-Ba-4Oq" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="108" id="vkF-Wg-oLN"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="UMV-Hc-jvf" secondAttribute="trailing" constant="133" id="w0w-Bc-eKS"/>
                         </constraints>
                     </view>
                     <connections>
@@ -101,11 +98,16 @@
                         <outlet property="Settings" destination="3bo-1i-bVY" id="P4Y-5v-yuv"/>
                         <outlet property="clickButton" destination="am1-6U-1lh" id="MjY-cK-3Q2"/>
                         <outlet property="congratsLabel" destination="N1R-tI-wAT" id="5Z1-cG-Jge"/>
-                        <outlet property="timerLabel" destination="UMV-Hc-jvf" id="kyS-Ng-C1k"/>
+                        <outlet property="timerLabel" destination="1uy-3I-tlH" id="jxB-xw-Erc"/>
                         <outlet property="userName" destination="Mh7-Wh-NPx" id="0UY-MY-0a7"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="Z2T-jn-N9Q">
+                    <rect key="frame" x="0.0" y="0.0" width="46" height="30"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <state key="normal" title="Button"/>
+                </button>
             </objects>
             <point key="canvasLocation" x="18.840579710144929" y="87.723214285714278"/>
         </scene>
@@ -117,6 +119,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Sign In Succesful ✅" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hoC-Hh-DFD">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" systemColor="systemYellowColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="33"/>
+                                <color key="textColor" red="0.26588070190000002" green="1" blue="0.31122630220000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hgL-21-5Ra">
                                 <rect key="frame" x="20" y="44" width="54" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -129,18 +139,31 @@
                         <viewLayoutGuide key="safeArea" id="uVC-lD-KnM"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
+                    <connections>
+                        <outlet property="SucessLabel" destination="hoC-Hh-DFD" id="pRg-PD-15C"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7kJ-05-Afu" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="709" y="88"/>
+            <point key="canvasLocation" x="708.69565217391312" y="87.723214285714278"/>
         </scene>
         <!--View Controller3-->
         <scene sceneID="Hr7-jj-3Qp">
             <objects>
-                <viewController storyboardIdentifier="VC3" id="sCq-xt-eUa" customClass="ViewController3" customModule="Lesson_1__Clicker_App" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="VC3" modalPresentationStyle="fullScreen" id="sCq-xt-eUa" customClass="ViewController3" customModule="Lesson_1__Clicker_App" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="NDK-ZD-eKd">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IZj-3b-fCI">
+                                <rect key="frame" x="20" y="44" width="54" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Dismiss"/>
+                                <connections>
+                                    <action selector="goHome:" destination="sCq-xt-eUa" eventType="touchUpInside" id="icR-ZN-94x"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="GLe-Z5-ZPJ"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
@@ -159,6 +182,9 @@
         </systemColor>
         <systemColor name="systemGroupedBackgroundColor">
             <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemYellowColor">
+            <color red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
