@@ -10,8 +10,11 @@ import FirebaseAuth
 import FirebaseFirestore
 
 class ViewController2: UIViewController {
-    @IBOutlet weak var SucessLabel: UILabel!
-
+    @IBOutlet weak var BackProfile: UIView!
+    @IBOutlet weak var usernameProfileLabel: UILabel!
+    @IBOutlet weak var email: UILabel!
+    @IBOutlet weak var HighestCount: UILabel!
+    
     private let label: UILabel = {
         let label = UILabel()
         label.textAlignment = .center
@@ -93,6 +96,7 @@ class ViewController2: UIViewController {
             view.addSubview(SignOutbutton)
             SignOutbutton.frame = CGRect(x: 20, y: 150, width: view.frame.size.width - 40, height: 52)
             SignOutbutton.addTarget(self, action: #selector(logOutTapped), for: .touchUpInside)
+            showProfile(show: true)
         }
     }
     
@@ -107,6 +111,8 @@ class ViewController2: UIViewController {
             button.isHidden = false
             
             SignOutbutton.removeFromSuperview()
+            
+            showProfile(show: false)
         }catch{
             print("An error occurred")
         }
@@ -161,10 +167,10 @@ class ViewController2: UIViewController {
             strongSelf.emailField.isHidden = true
             strongSelf.passwordField.isHidden = true
             
+            strongSelf.userName.resignFirstResponder()
             strongSelf.emailField.resignFirstResponder()
             strongSelf.passwordField.resignFirstResponder()
-            
-            self?.SucessLabel.isHidden = false
+            self?.showProfile(show: true)
         })
     }
     
@@ -184,11 +190,14 @@ class ViewController2: UIViewController {
                 print("Sign in sucessful")
                 strongSelf.label.isHidden = true
                 strongSelf.button.isHidden = true
+                strongSelf.userName.isHidden = true
                 strongSelf.emailField.isHidden = true
                 strongSelf.passwordField.isHidden = true
                 
                 strongSelf.emailField.resignFirstResponder()
                 strongSelf.passwordField.resignFirstResponder()
+                
+                self?.showProfile(show: true)
                 
                 //update firebase
                 let db = FirebaseFirestore.Firestore.firestore()
@@ -211,5 +220,39 @@ class ViewController2: UIViewController {
     @IBAction func goHome(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
     }
-
+    
+    
+    func showProfile(show: Bool){
+        BackProfile.layer.borderColor = CGColor.init(red: 0, green: 0, blue: 0, alpha: 0)
+        BackProfile.layer.cornerRadius = 10
+        
+        if show == true && FirebaseAuth.Auth.auth().currentUser != nil{
+            BackProfile.isHidden = false
+            let database = FirebaseFirestore.Firestore.firestore()
+            
+            database.collection("User").getDocuments() { [self] (querySnapshot, err) in
+                if let err = err {
+                    print("Error getting documents: \(err)")
+                } else {
+                    for document in querySnapshot!.documents {
+                        if document.documentID == FirebaseAuth.Auth.auth().currentUser?.email{
+                            let data = document.data()
+                            usernameProfileLabel.text = data["username"] as? String
+                            email.text = "Email: \(data["email"] as! String)"
+                            HighestCount.text = "highestCounts:\(data["highestCount"] as! Int)"
+                            
+                        }
+                        usernameProfileLabel.isHidden = false
+                        email.isHidden = false
+                        HighestCount.isHidden = false
+                    }
+                }
+            }
+        } else if show == false{
+            usernameProfileLabel.isHidden = true
+            email.isHidden = true
+            HighestCount.isHidden = true
+        }
+    }
+    
 }

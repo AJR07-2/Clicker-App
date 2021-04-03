@@ -23,27 +23,29 @@ class HistoryViewController: UIViewController {
         self.dismiss(animated: true, completion: nil)
     }
     
-    func refreshLeaderboard(){
+    func refreshHistory(){
         let database = FirebaseFirestore.Firestore.firestore()
         var subData:[String] = []
-        database.collection("User").document(FirebaseAuth.Auth.auth().currentUser?.email as! String).collection("History").getDocuments() { [self] (querySnapshot, err) in
-            if let err = err {
-                print("Error getting documents: \(err)")
-            } else {
-                for document in querySnapshot!.documents {
-                    let dateFormatter = DateFormatter()
-                    dateFormatter.dateFormat = "HH:mm E, d MMM y"
+        if(FirebaseAuth.Auth.auth().currentUser != nil){
+            database.collection("User").document(FirebaseAuth.Auth.auth().currentUser?.email as! String).collection("History").getDocuments() { [self] (querySnapshot, err) in
+                if let err = err {
+                    print("Error getting documents: \(err)")
+                } else {
+                    for document in querySnapshot!.documents {
+                        let dateFormatter = DateFormatter()
+                        dateFormatter.dateFormat = "HH:mm E, d MMM y"
 
-                    
-                    let date:Timestamp = document.data()["time"] as! Timestamp
-                    let convertedDate : Date = date.dateValue()
-                    let reConvertedDate = dateFormatter.string(from: convertedDate)
-                    
-                    subData.append("Attempt on: \(reConvertedDate), Clicks: \(document.data()["score"] as! Int)")
+                        
+                        let date:Timestamp = document.data()["time"] as! Timestamp
+                        let convertedDate : Date = date.dateValue()
+                        let reConvertedDate = dateFormatter.string(from: convertedDate)
+                        
+                        subData.append("Attempt on: \(reConvertedDate), Clicks: \(document.data()["score"] as! Int)")
+                    }
                 }
+                data = subData
+                history.reloadData()
             }
-            data = subData
-            history.reloadData()
         }
     }
 
@@ -56,7 +58,7 @@ extension HistoryViewController: UITableViewDelegate {
 
 extension HistoryViewController: UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        refreshLeaderboard()
+        refreshHistory()
         return data.count
     }
     
